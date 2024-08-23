@@ -24,7 +24,7 @@ const ProductController = {
       const { id } = req.params;
       const { nome, preco, qtd } = req.body;
 
-      const productUpdate = await Product.findByPk(id);
+      const productUpdate = await Product.findByPk();
       if (productUpdate == null) {
         return res.status(404).json({
           msg: "Produto não econtrado",
@@ -65,7 +65,7 @@ const ProductController = {
     const { id } = req.params;
     const produtoEncontrado = await Product.findByPk(id);
     if (produtoEncontrado == null) {
-      return res.status(404).json({
+      return res.status(400).json({
         msg: "Produto nao encontrado!",
       });
     }
